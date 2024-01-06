@@ -1,10 +1,9 @@
-package leetcode.scala
+package leetcode.scala.twosums
 
 import scala.collection.immutable.HashMap
 
-
 // неоптимальный
-object task1 extends App {
+object TwoSums extends App {
   def twoSum(numbers: Array[Int], target: Int): Array[Int] =
     numbers
       .zipWithIndex
@@ -14,19 +13,4 @@ object task1 extends App {
       }
       ._2
       .toArray
-}
-
-// более оптимальный вариант
-object task1_opt extends App {
-  def twoSum(numbers: Array[Int], target: Int): Array[Int] = {
-    val indices = scala.collection.mutable.Map[Int, Int]()
-
-    for (i <- numbers.indices) {
-      indices.get(target - numbers(i)) match {
-        case Some(j) => return Array(j, i)
-        case None => indices(numbers(i)) = i
-      }
-    }
-    Array.empty[Int]
-  }
 }
